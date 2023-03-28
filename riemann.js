@@ -146,9 +146,9 @@ ctx.fillText("Im(Zeta)",canvas.width/2,canvas.height/10-20);
 ctx.textAlign = "left";
 ctx.fillText("Re(Zeta)",9*canvas.width/10+20,canvas.height/2);
 var Yaxis = new Array;
-Yaxis = [4,3,2,1,0,-1,-2,-3,-4];
+Yaxis = [3,2,1,0,-1,-2,-3];
 for (var j = 0; j < Yaxis.length; j++) {
-    var delta_y_pos = canvas.height*.8/8;
+    var delta_y_pos = canvas.height*.8/6;
     var y_pos = canvas.height*.1 + delta_y_pos*j;
     var x_pos = canvas.width/2;
         ctx.textBaseline = "middle";
