@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.5.0/math.min.js" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+<script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+
+
+
+<link rel="stylesheet" type="text/css" href="./riemann.css">
+</head>
+<body>
+<div id="block_container"  style="background-color: #00b5e2; margin-left:10%; margin-right:10%;">
+    <p> </p>
+    <p> </p>
+    <br>
+        <h1> Visualization of the Riemann Zeta Function</h1>
+        <h2> CIIEC-BUAP</h2>
+         <br>
+        <hr>
+ <p style="color:black;font-size:30px;">
+   
+
+<a href="https://en.wikipedia.org/wiki/Leonhard_Euler">Leonhard Euler</a> (1707 - 1783) introduced the $\zeta (s)$ function for real values s, defined as
+\begin{equation*}
+\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}
+\end{equation*}
+He found  that it converges for s &gt;1. He also found the value for s=2, known as the <a href="https://en.wikipedia.org/wiki/Basel_problem">Basel problem</a>
+
+
+\begin{equation*}
+\zeta(2)=\sum_{n=1}^{\infty}\frac{1}{n^2} = \frac{\pi^2}{6}
+\end{equation*}
+
+
+and for all the positive even numbers:
+
+\begin{equation*}
+\zeta (2n)={\frac {(-1)^{n+1}B_{2n}(2\pi )^{2n}}{2(2n)!}}
+\end{equation*}
+
+
+where $B_{2n}$ is the 2n-th <a href="https://en.wikipedia.org/wiki/Bernoulli_number">Bernoulli number.</a>
+
+<br><br>
+In 1937 he also discovered an important relation between $\zeta(s)$ and the prime numbers,
+the so-called Euler product formula:
+\begin{equation*}
+\zeta(s)=\prod_{p}\frac{1}{(1-p^{-s})} \quad for \quad s &gt; 1
+\end{equation*}
+
+See proof  <a href="https://en.wikipedia.org/wiki/Proof_of_the_Euler_product_formula_for_the_Riemann_zeta_function">here</a>
+<br><br>
+
+ <a href="https://en.wikipedia.org/wiki/Bernhard_Riemann">Bernhard Riemann</a>  introduced radically new ideas and new techniques to study number theory in an analytic way in a <a href="https://www.claymath.org/sites/default/files/ezeta.pdf">paper</a> that  he presented to the Berlin Academy of Sciences in 1859. He generalized the $\zeta(s)$ function to complex numbers $s$ 
+
+
+\begin{equation*}
+\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}  \quad for \quad Re(s) &gt; 1
+\end{equation*}
+
+
+ and derived its <a href="https://en.wikipedia.org/wiki/Analytic_continuation">analytic continuation</a> to the whole complex plane through the functional equation
+
+ \begin{align*}\zeta(s)
+&= 2^{s} \pi^{s-1} \Gamma(1-s)\sin(\frac{\pi s}{2})\zeta(1-s).\end{align*}
+
+where  $\Gamma(s)$ is the gamma function. See proof  <a href="https://en.wikipedia.org/wiki/Riemann_zeta_function">here</a>.
+<br><br>
+
+
+
+
+    <br><br>
+    He also derived an exact formula for the number of primes less than x by means of the zeros of the zeta function and put forward the conjecture that all the non-trivial zeroes of the $\zeta$ function lie along the line x = 1/2, this so-called <a href="https://en.wikipedia.org/wiki/Riemann_hypothesis">Riemann hypothesis</a> has resisted  proof for more than 164 years and constitutes one of the most important open problems in pure mathematics. 
+<br><br>
+    The Riemann hypothesis is one of the <a href="https://www.claymath.org/millennium-problems">seven millennium Prize Problems</a> established by the <a href="https://www.claymath.org/millennium-problems/millennium-prize-problems">Clay Mathematics Institute</a>.
+<br><br>
+
+
+
+<hr>
+    <p style="color:black;font-size:30px;">
+The next plot displays the value of $\zeta(x_0+it)$, you can change the values of $x_0$ and $t_{min}$. The code to evaluate $\zeta(x_0+it)$ was taken from <a href="https://github.com/prajwalsouza/Complex-Functions">here</a>. Valid for $-600 < t_{min} < 600$.</p>
+
+    <div id="block_container" style="text-align:center;">
+            <label style="font-size: 20pt;">$x_0$: </label>
+        <input id="valor_x" value="0.5" type="text" onchange="Plot()">
+        <label style="font-size: 20pt;">$t_{min}$: </label>
+        <input id="tmin" value="-20.0" type="text" onchange="Plot()">
+        <input class="favorite styled" type="button" id="start_stop" value="Start" onclick="start();">
+        <input class="favorite styled" type="button" id="sreset" value="Reset" onclick="reset();">
+    </div>
+<hr>
+
+   <canvas  width="600" height="600"></canvas>
+
+
+            <br>
+        </div>
+<script type="text/javascript" src="./riemann.js"></script>
+</body>
+</html>
