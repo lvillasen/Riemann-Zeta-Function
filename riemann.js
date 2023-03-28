@@ -79,11 +79,11 @@ function step(){
     ctx.globalAlpha = 0.5;
     sj = math.complex(x_value,i/30);
     x0 =canvas.width/2+zetaEMS(sj, 100, 40).re*(.8*canvas.width)/8;
-    y0 = canvas.height/2-zetaEMS(sj, 100, 40).im*(.8*canvas.height)/8;
+    y0 = canvas.height/2-zetaEMS(sj, 100, 40).im*(.8*canvas.height)/6;
     ctx.moveTo(x0, y0);
     sj = math.complex(x_value,(i+1)/30);
     x1 =canvas.width/2+zetaEMS(sj, 100, 40).re*(.8*canvas.width)/8;;
-    y1 = canvas.height/2-zetaEMS(sj, 100, 40).im*(.8*canvas.height)/8;
+    y1 = canvas.height/2-zetaEMS(sj, 100, 40).im*(.8*canvas.height)/6;
 ctx.lineTo(x1, y1);
 ctx.stroke();
 canvasData = ctx.getImageData(0, 0, canvas.width, canvas.height);
