@@ -14,5 +14,5 @@ https://ciiec.buap.mx/Riemann
 
 ## Credits
 
-- The code to evaluate Riemann Zeta function was taken from https://github.com/prajwalsouza/Complex-Functions
+- The code to evaluate the Riemann Zeta function was taken from https://github.com/prajwalsouza/Complex-Functions
 
