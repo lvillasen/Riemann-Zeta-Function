@@ -1,5 +1,5 @@
 # Riemann-Zeta-Function
-Visualization of the Riemann Zeta Function in Javascript.
+Visualization of the Riemann Zeta Function in Javascript and SageMath.
 
 ## Usage
 
