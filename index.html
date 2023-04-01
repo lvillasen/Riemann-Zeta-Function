@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.5.0/math.min.js" type="text/javascript"></script>
+<script type="text/x-mathjax-config">MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});</script>
+<script type="text/javascript"src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>  
+
+
+
+<link rel="stylesheet" type="text/css" href="./riemann.css">
+ <script src="https://sagecell.sagemath.org/static/embedded_sagecell.js"></script>
+    <script>
+    // Make the div with id 'mycell' a Sage cell
+    sagecell.makeSagecell({inputLocation:  '#mycell',
+                           template:       sagecell.templates.minimal,
+                           evalButtonText: 'Activate'});
+    // Make *any* div with class 'compute' a Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.compute',
+                           evalButtonText: 'Plot'});
+    </script>
+    <script type="text/javascript" async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+</head>
+<body>
+<div id="block_container"  style="background-color: #00b5e2; margin-left:10%; margin-right:10%;">
+    <p> </p>
+    <p> </p>
+    <br>
+        <h1> Visualization of the Riemann Zeta Function</h1>
+        <h2> CIIEC-BUAP</h2>
+         <br>
+        <hr>
+ <p style="color:black;font-size:30px;">
+   
+
+<a href="https://en.wikipedia.org/wiki/Leonhard_Euler">Leonhard Euler</a> (1707 - 1783) introduced the $\zeta (s)$ function for real values s, defined as
+\begin{equation*}
+\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}
+\end{equation*}
+He found  that it converges for s &gt;1. He also found the value for s=2, known as the <a href="https://en.wikipedia.org/wiki/Basel_problem">Basel problem</a>
+
+
+\begin{equation*}
+\zeta(2)=\sum_{n=1}^{\infty}\frac{1}{n^2} = \frac{\pi^2}{6}
+\end{equation*}
+
+
+and for all the positive even numbers:
+
+\begin{equation*}
+\zeta (2n)={\frac {(-1)^{n+1}B_{2n}(2\pi )^{2n}}{2(2n)!}}
+\end{equation*}
+
+
+where $B_{2n}$ is the 2n-th <a href="https://en.wikipedia.org/wiki/Bernoulli_number">Bernoulli number.</a>
+
+<br><br>
+In 1937 he also discovered an important relation between $\zeta(s)$ and the prime numbers,
+the so-called Euler product formula:
+\begin{equation*}
+\zeta(s)=\prod_{p}\frac{1}{(1-p^{-s})} \quad for \quad s &gt; 1
+\end{equation*}
+
+See proof  <a href="https://en.wikipedia.org/wiki/Proof_of_the_Euler_product_formula_for_the_Riemann_zeta_function">here</a>.
+<br><br>
+
+ <a href="https://en.wikipedia.org/wiki/Bernhard_Riemann">Bernhard Riemann</a>  introduced new ideas and new techniques to study number theory in an analytic way in a <a href="https://www.claymath.org/sites/default/files/ezeta.pdf">paper</a> that  he presented to the Berlin Academy of Sciences in 1859. He generalized the $\zeta(s)$ function to complex numbers $s$ 
+
+
+\begin{equation*}
+\zeta(s)=\sum_{n=1}^{\infty}\frac{1}{n^s}  \quad for \quad Re(s) &gt; 1
+\end{equation*}
+
+
+
+<br><br>
+
+The reciprocal of the zeta function may be expressed as a <a href="https://en.wikipedia.org/wiki/Dirichlet_series">Dirichlet series</a> over the <a href="https://en.wikipedia.org/wiki/M%C3%B6bius_function">Möbius function</a>  μ(n):
+
+\begin{equation*}
+\frac{1}{\zeta(s)} = \sum_{n=1}^\infty \frac{\mu(n)}{n^s}  \quad for \quad Re(s) &gt; 1
+\end{equation*}
+
+
+For a proof see <a href="https://proofwiki.org/wiki/Reciprocal_of_Riemann_Zeta_Function">here</a>.
+
+
+Where the Möbius function is 
+
+  \begin{equation}
+    \mu(n)=
+    \begin{cases}
+      0, \text{ if n has one or more repeated prime factors } \\
+      1, \text{ if n=1 }\\
+      (-1)^k,  \text{ if n is a product of k distinct primes}
+    \end{cases}
+  \end{equation}
+
+
+The function
+
+\begin{equation}
+\eta(s) =
+\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^s} = 1 - \frac{1}{2^s} + \frac{1}{3^s} - \frac{1}{4^s} + \frac{1}{5^s} + \cdots
+\end{equation}
+is called <a href="https://en.wikipedia.org/wiki/Dirichlet_eta_function#:~:text=Both%20Dirichlet%20eta%20function%20and,are%20special%20cases%20of%20Polylogarithm.&amp;text=represents%20the%20Gamma%20function">Dirichlet eta function</a>, it converges for Re(s) &gt; 0.
+
+
+<br><br>
+
+If we add
+\begin{equation}
+2(\frac{1}{2^s} + \frac{1}{4^s} + \frac{1}{6^s} + \frac{1}{8^s} + \cdots) \\= \frac{2}{2^s}(\frac{1}{1^s} + \frac{1}{2^s} + \frac{1}{3^s} + \frac{1}{3^s} + \cdots) \\= \frac{2}{2^s}\zeta(s)
+\end{equation}
+
+to the $\eta(s)$ function we get $\zeta(s)$, i.e.,
+
+\begin{equation}
+\eta(s) + \frac{2}{2^s}\zeta(s) = \zeta(s)  
+\end{equation}
+
+i.e., 
+\begin{equation}
+\zeta(s) = \frac{1}{1-2^{1-s}}\eta(s)
+\end{equation}
+
+providing an <a href="https://en.wikipedia.org/wiki/Analytic_continuation">analytic continuation</a> of the $\zeta(s)$ function to Re(s) &gt; 0.
+
+<br><br>
+In his 1859 paper Riemann proved the so-called functional equation
+
+\begin{equation}
+\zeta(s) = 2^s \pi^{s-1}sen(\frac{\pi s}{2})\Gamma(1-s)\zeta(1-s)
+\end{equation}
+
+where  $\Gamma(s)$ is the gamma function. See proof  <a href="https://en.wikipedia.org/wiki/Riemann_zeta_function">here</a>.
+
+This equation provides further analytical extension of the $\zeta(s)$ function to Re(s) &lt; 0.
+
+<br><br>
+
+
+
+
+
+
+The extended $\zeta(s)$ function can therefore be represented in the following way, depending on the domain on the complex plane:
+
+
+
+\begin{equation}
+\zeta(s) =
+\begin{cases}
+  \sum_{n=1}^{\infty}\frac{1}{n^s} , \text{ if Re(s) > 1 } \\
+  \frac{1}{1-2^{1-s}}\sum_{n=1}^{\infty}\frac{(-1)^{n-1}}{n^s}, \text{ if Re(s) > 0 } \\
+  2^s \pi^{s-1}sen(\frac{\pi s}{2})\Gamma(1-s)\zeta(1-s), \text{ if Re(s) < 0 } \\
+\end{cases}
+\end{equation}
+
+
+    <br><br>
+     Riemann conjectured that all the non-trivial zeros of the $\zeta$ function lie along the line $x=\frac{1}{2}$, this so-called <a href="https://en.wikipedia.org/wiki/Riemann_hypothesis">Riemann hypothesis</a> has resisted  proof for more than 164 years and constitutes one of the most important open problems in pure mathematics. 
+<br><br>
+    The Riemann hypothesis is one of the <a href="https://www.claymath.org/millennium-problems">seven millennium Prize Problems</a> established by the <a href="https://www.claymath.org/millennium-problems/millennium-prize-problems">Clay Mathematics Institute</a>.
+<br>
+
+<hr>
+    <p style="color:black;font-size:30px;">
+The next plot displays the value of $\zeta(x_0+it)$, along the line $Re(s)=x_0$, you can change the values of $x_0$ and $t_{min}$. The code to evaluate $\zeta(x_0+it)$ was taken from <a href="https://github.com/prajwalsouza/Complex-Functions">here</a>. Valid for $-600 < t_{min} < 600$.
+</p>
+
+<hr>
+    <div id="block_container" style="text-align:center;">
+            <label style="font-size: 20pt;">$x_0$: </label>
+        <input id="valor_x" value="0.5" type="text" onchange="Plot()">
+        <label style="font-size: 20pt;">$t_{min}$: </label>
+        <input id="tmin" value="-20.0" type="text" onchange="Plot()">
+        <input class="favorite styled" type="button" id="start_stop" value="Start" onclick="start();">
+        <input class="favorite styled" type="button" id="sreset" value="Reset" onclick="reset();">
+    </div>
+
+
+   <canvas  id="canvas" width="600" height="600"></canvas>
+
+
+            <br> <br>
+
+<p style="color:black;font-size:30px;"> Since JavaScript is not well suited for advanced mathematics, we now turn to <a href="https://www.sagemath.org/">Sage</a> which is a free, open-source math software. You can modify the code in the following <a href="https://sagecell.sagemath.org/?q=iyqcsn"> SageMathCells</a>.
+<br> <br>
+
+    The plot below shows the spiral convergence of the approximation to $\zeta(s)$ given by
+\begin{equation*}
+\zeta(s) \approx   \frac{1}{1-2^{1-s}}\sum_{n=1}^{k}\frac{(-1)^{n-1}}{n^s}, \text{ if Re(s) > 0 } \\
+ \text{ when k is a large positive integer}
+\end{equation*}
+
+
+you can change the complex value of s and the number of terms k 
+</p>
+
+<div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+s=.5+230.022039639*I
+k = 300
+f0=0;y0=0
+x0=0;
+p=plot(line([(x0,y0),(x0,y0)],linestyle='-'))
+for n in srange(1,k+1):
+    f1 = f0 +(-1)^(n-1)*(n^(-s))/(1-2^(1-s))
+    colo = ['red','green','blue']
+    p+=plot(line([(f0.real(),f0.imag()),(f1.real(),f1.imag())],linestyle='-',color=colo[n%3],thickness=2))
+    f0=f1
+from matplotlib.ticker import FormatStrFormatter
+#p.axes_labels([r'Re($\zeta$)',r'Im($\zeta$)'])
+p.show(title=r'Successive Approximations to $\zeta(%f + i%f)$' %(s.real(), s.imag()) ,fontsize=15, figsize=[9,6])
+print('k = ',k,'\n','zeta(',s,') = ',zeta(s).n(),'\n','Approx Value for Zeta(s) =',f1.n(),'*I')
+
+
+</script></div>
+
+
+<p style="color:black;font-size:30px;"> 
+
+    The plot below shows $\zeta(x_0+it)$ along the line $s=x_0$, you can change $x_0$,$t_{min}$ and $t_{max}$. 
+</p>
+
+<div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+x0 = .5;t_min = -20;t_max = 100
+#var('t')
+p=line([[zeta(x0+t/20*I).real(), zeta(x0+t/20*I).imag()] for t in range(1,20*t_max)],color="blue",aspect_ratio=1)
+p.axes_labels([r'$\zeta_{re}$',r'$\zeta_{im}$'])
+p.set_axes_range(-2, 8, -5, 5)
+p.show(gridlines=True,title=r'$\zeta(%f+it)$ for $t$ from %i to %i' %(x0,t_min,t_max), figsize=(8,6))
+
+</script></div>
+
+<p style="color:black;font-size:30px;"> 
+
+<br> <br>
+
+You can change the parameters for the following animation in SageMath, similar to what we did in JavaScript but with a better approximation to the $\zeta$ function. 
+</p>
+
+<div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+x0 = .5;t_min = 0;t_max = 50
+#var('t')
+p=[]
+from sage.parallel.multiprocessing_sage import pyprocessing
+p_iter = pyprocessing(1)
+P = parallel(p_iter=p_iter)
+def f(t): 
+    #var('t')
+    x0 = .5
+    return zeta(x0+t*I).real()
+def g(t): 
+    #var('t')
+    x0 = .5
+    return zeta(x0+t*I).imag()
+t = [i/20 for i in range(20*t_min,20*t_max)]
+u = list(sorted(P(f)(list(t))));
+v = list(sorted(P(g)(list(t))));
+x1 = [u[i][1] for i in range(len(t))]
+y1 = [v[i][1] for i in range(len(t))]
+for t in range(t_min+1,t_max):
+    p2 = plot(line2d(zip(x1[0:(t-1)*10],y1[0:(t-1)*10]),aspect_ratio=1,color='aqua'))
+    p2 += plot(line2d(zip(x1[(t-1)*10:t*10],y1[(t-1)*10:t*10]),aspect_ratio=1,color='blue'))
+    p2 += points((x1[t*10-1],y1[t*10-1]),frame=True,axes=True,gridlines='True')
+
+    p2 += text('t = ' + str(t+1),(5,3),background_color='aqua')
+    p2.axes_labels([r'Re($\zeta(%f+it)$)'%x0,r'Im($\zeta(%f+it)$)'%x0])
+    p2.set_axes_range(-2, 8, -5, 5)
+    p.append(p2)
+anim = animate(p)
+anim.show(delay=30, iterations=2)
+
+</script></div>
+
+
+
+
+
+<p style="color:black;font-size:30px;"> 
+<br> <br>
+
+The complexity of the Riemann $\zeta$ function includes very close pairs of zeros called  <a href="https://en.wikipedia.org/wiki/Lehmer_pair"> Lemher pairs </a> after Derrick Henry Lehmer, who discovered in 1956 the pair of zeros ilustrated on the next plot:
+
+
+\begin{aligned}&{s=\tfrac {1}{2}}+i\,7005.06266\dots \\[4pt]&{s=\tfrac {1}{2}}+i\,7005.10056\dots \end{aligned}
+
+</p>
+
+<div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+t = var('t')
+p = parametric_plot((lambda t : zeta(.5+t*I).real(), lambda t : zeta(.5+t*I).imag()), (t, 7005+1/25, 7005+1/9),color='green')
+p.set_axes_range(-.008, .002, -.005, .005)
+p.show(gridlines=True,figsize=[6,6])
+
+</script></div>
+
+
+<p style="color:black;font-size:30px;"> 
+<br> <br>
+
+The plot below shows the absolute values of $\zeta(s)$. The first 6 zeroes can be seen symmetric at  $Im(s) = - Im(s)$ on the $Re(s) = 1/2$ <i>critical line</i>. You can vary the values of $x_0 = Re(s)$ and $t_{max}$.
+
+</p>
+
+<div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+x0 = .5 ; t_max = 40.
+var('t')
+p=plot(abs(zeta (x0+t*I)),(t,-t_max,t_max),color='blue'\
+       ,axes_labels=['$t$', r'$|\zeta(%f+it)|$' %x0],title =r'Plot of $|\zeta(%f+it)|$' %x0)
+p.show(frame=True, gridlines='minor',title=r'Plot of $|\zeta(%f + it)|$' %(x0) ,fontsize=15, figsize=8)
+
+</script></div>
+
+
+<p style="color:black;font-size:30px;"> 
+<br> <br>
+
+The following plot shows the real part (green) and imaginary part (red) of $\zeta(s)$. The first 6 zeroes can be seen at  the coincidences of the zeroes  of these two curves. If you use $x_0 \neq \frac{1}{2}$ the zeroes of these two curves never coincide if the Riemann hypothesis is true. 
+
+</p>
+
+<div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+x0 = .5 ; t_max = 40.
+var('t')
+p=plot(zeta (x0+t*I).real(),(t,-t_max,t_max),color='blue',legend_label=r'Real $\zeta(%f+it)$'%(x0), legend_color='blue')
+p+=plot(zeta (x0+t*I).imag(),(t,-t_max,t_max),color='red',legend_label=r'Imag $\zeta(%f+it)$' %(x0), \
+        legend_color='red',axes_labels=['$t$', ''])
+p.axes_labels([r'Re($\zeta$)',r'Im($\zeta$)'])
+p.show(frame=True, gridlines='minor',title=r'Plot of $\zeta(%f + it)$' %(x0) ,fontsize=15, figsize=8)
+
+</script></div>
+
+
+<p style="color:black;font-size:30px;"> The  next plot shows contours of the points where the real part of $\zeta(s)$ is zero (green) and the imaginary part of $\zeta(s)$ is zero (red). The zeros of $\zeta(s)$ are at the intersections of the green and red lines. The so-called trivial zeros are at s =-2,-4, ... The non-trivial zeros occur in the strip $0 \lt Re(s) \lt 1$, located symmetrically above and below the real axis. The first zeros were computed by Riemann by means of the now known as the <a href="https://en.wikipedia.org/wiki/Riemann%E2%80%93Siegel_formula">Riemann-Siegel formula</a>. Riemann noticed that they lie on the vertical line $Re(s) = \frac{1}{2}$  and $Im(s) $ = 14.134725142,  21.022039639 and 25.01085758. The dashed line is the <i>critical line</i>.
+
+</p>
+
+<div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+x,y = var('x,y')
+p = contour_plot(lambda x,y : zeta(x+y*I).imag(), (x,-20,10), (y,-1,30),cmap='Reds', \
+            fill=False, plot_points = 100,contours=(0),axes_labels=['$x$','$t$'])
+p += contour_plot(lambda x,y : zeta(x+y*I).real(), (x,-20,10), (y,-1,30),cmap='Blues',\
+             fill=False, plot_points = 100,contours=(0))
+#p += complex_plot ( zeta,( -20 ,10),( -1 ,30),plot_points=200)
+p += plot(line([(.5,-1),(.5,30)],linestyle='--'))
+p.show(title =r'Plot of $\zeta(x+it)$',fontsize=15, figsize=8)
+
+</script></div>
+
+
+
+<p style="color:black;font-size:30px;"> The following plot is similar to the previous one but the Riemann $\zeta$ function is plotted on top of the contour plots.The color scheme of this plot is known as <a href="https://en.wikipedia.org/wiki/Domain_coloring">  domain coloring</a>( which is commonly used to represent complex functions by assigning a color to each point of the complex plane.
+
+</p>
+
+<div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+x,y = var('x,y')
+p = contour_plot(lambda x,y : zeta(x+y*I).imag(), (x,-20,10), (y,-1,30),cmap='Reds', \
+            fill=False, plot_points = 100,contours=(0),axes_labels=['$x$','$t$'])
+p += contour_plot(lambda x,y : zeta(x+y*I).real(), (x,-20,10), (y,-1,30),cmap='Blues',\
+             fill=False, plot_points = 100,contours=(0))
+p += complex_plot ( zeta,( -20 ,10),( -1 ,30),plot_points=200)
+p += plot(line([(.5,-1),(.5,30)],linestyle='--'))
+p.show(title =r'Plot of $\zeta(x+it)$',fontsize=15, figsize=8)
+
+
+</script></div>
+        
+<p style="color:black;font-size:30px;">
+
+
+        Riemann also derived an exact formula for the prime-counting function, $\pi(x)$, which gives the number of prime numbers $\leq x$  in terms of the zeros of the zeta function 
+
+
+
+        \begin{equation*}
+
+{\displaystyle  {\pi} (x)=\sum_{n=1}^{\infty }{\frac {\mu (n)}{n}}\displaystyle {J} (x^{1/n})}
+\\
+{\displaystyle J(x)=\displaystyle {Li} (x)-\sum _{\rho }\displaystyle {Li} (x^{\rho })-\ln 2+\int _{x}^{\infty }{\frac {dt}{t\left(t^{2}-1\right)\ln t}}.}
+\\
+\end{equation*}
+
+where the sum is over the non-trivial zeros of the $\zeta$ function, including those for $t<0$, and the logarithmic integral Li(x) is
+\begin{equation*}
+Li(x)={\large\int_{\small 2}^{\small x}\frac{1}{\ln(t)}}dt
+\end{equation*}
+
+For the purpose of calculation, we use the <i>exponential integral function</i>  defined as $Ei(\ln(x))=li(x)$.
+
+
+</p>
+
+<p style="color:black;font-size:30px;">The plot below shows
+ the <i>prime-counting function</i> $\pi(x)$ in blue, approximated to the first $n\_zeros$ as shown above, and the two asymptotic curves $Li(x)$ and $\frac{x}{\log(x)}$.
+
+
+
+</p>
+
+
+        <div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+zeta_zeros=[14.134725142,21.022039639,25.010857580,30.424876126,32.935061588,37.586178159,40.918719012,43.327073281,
+            48.005150881,49.773832478,52.970321478,56.446247697];
+n_zeros = 9
+X_max = 50.
+var('x')
+def pi( x ):
+  n_terms = 10
+  Mu = [moebius(m) for m in range(n_terms)]
+  pi0 = 0
+  for k in range(1,n_terms):
+    x1 = x**(1/(k))
+    pi0 += Mu[k] / k *J(x1)
+  return float(pi0)
+def J ( x ):
+  sumEi = 0
+  for k in srange(n_zeros):
+    z0 = .5+zeta_zeros[k]*I
+    sumEi += 2*(Ei(z0*log(x)).real())
+  return li(x) - sumEi - log(2.)
+p=plot(prime_pi (x),(x,2,X_max),color='blue',legend_label='Prime Counting Function', legend_color='blue',
+       axes_labels=['$x$', r'Number of Primes $\leq x$'])
+p += plot(x/log(x),(x,2,X_max),color='red',legend_label=r'$\frac{x}{log(x)}$', legend_color='red')
+p += plot(Li(x),(x,2,X_max),color='green',linestyle='--',legend_label='Li(x)', legend_color='green')
+p += plot(pi,2.,X_max,color='black',linestyle='--',legend_label=r'$\pi(x)$ with %i zeros' %(n_zeros), legend_color='black')
+p.show(gridlines='minor',title=r'Prime-Counting Function from %i to %i' %(2,X_max),figsize=[9,6])</script></div>
+<br><br><br><br><br><br>
+
+
+<p style="color:black;font-size:30px;">Experiment with your own code here, for instance you can animate the previous plot with respect to the number of zeros. There is a good tutorial about SageMath <a href="https://doc.sagemath.org/html/en/tutorial/index.html">here</a>.</p>
+
+ 
+        <div class="compute" style="text-align:left; margin-left: 10%;"><script type="text/x-sage">
+
+
+
+</script></div>
+<br><br><br><br><br><br>
+
+
+<script type="text/javascript" src="./riemann.js"></script>
+</body>
+</html>
