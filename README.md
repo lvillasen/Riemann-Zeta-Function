@@ -4,7 +4,7 @@ Visualization of the Riemann Zeta Function in Javascript and SageMath.
 ## Usage
 
 - Clone the repository
-- Open the index.html file with any navigator
+- Open the file index.html with any web browser
 
 
 ## Live Demo
